@@ -1,4 +1,4 @@
 cd "%~pd0"
-mkdir "%~pd0target\classes"
-dir /s /B *.java > "%~pd0target\sources.txt"
-javac -cp "%~pd0lib\*" -d "%~pd0target\classes" "@%~pd0target\sources.txt"
+mkdir target\classes
+forfiles /s /m *.java /c "cmd /c echo @relpath" > target\sources.txt
+javac -cp "lib\*" -d "target\classes" @target\sources.txt
